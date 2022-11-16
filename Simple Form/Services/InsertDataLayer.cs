@@ -36,9 +36,11 @@ namespace Simple_Form.Services
         public void InsertThought(string connectionString, string username, string thought
                    )
         {
-            // define UPDATE query with parameters
-       
-            var query = "UPDATE  users  SET thought=@Thought WHERE Username =@Username";
+
+    
+                // define UPDATE query with parameters
+
+                var query = "UPDATE  users  SET thought=@Thought WHERE Username=@Username";
             // create connection and command
             using (SqlConnection cn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -47,10 +49,13 @@ namespace Simple_Form.Services
                 cmd.Parameters.Add("@Username", SqlDbType.NVarChar, int.MaxValue).Value = username;
                 cmd.Parameters.Add("@Thought", SqlDbType.NVarChar, int.MaxValue).Value = thought;
 
-                // open connection, execute INSERT, close connection
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                cn.Close();
+
+                    // open connection, execute INSERT, close connection
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+
+            
             }
         }
     }
